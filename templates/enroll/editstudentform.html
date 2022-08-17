@@ -1,0 +1,44 @@
+{% extends 'enroll/base.html' %}
+{% load static %}
+{% block CSS %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'enroll/CSS/addAndShow.css' %}">
+    <style>
+        .main-container{
+            justify-content: center;
+            border: none;
+        }
+        #backbutton{
+            display:inline-block;
+            width:100%;
+            padding:.8rem .3rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            font-size:1.8rem;
+            color:#fff;
+            background: navy;
+            margin-top:1.2rem;
+            text-align: center;
+        }
+    </style>
+{% endblock CSS %}
+
+{% block content %}
+<div class="main-container">
+    <div class="registration-form">
+        <h2>Update Student Details</h2>
+        <div class="form-container">
+            <form action="{% url 'updatestudent' %}" method="POST" novalidate>
+                {% csrf_token %}
+                {{form.non_field_errors}}
+                    {% for field in form %}
+                        {{field.label_tag}} {{field}} <span class="errorlist">{{field.errors|striptags}}</span>
+                    {% endfor %}
+                <input type="hidden" name="id" value={{studentid}}>
+                <input type="submit" value="Update Student">
+                <a id="backbutton" href="{% url 'home' %}">Back to Home</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

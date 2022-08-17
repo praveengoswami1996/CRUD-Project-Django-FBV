@@ -1,0 +1,54 @@
+{% extends 'enroll/base.html' %}
+{% load static %}
+{% block CSS %}
+    {{block.super}}
+    <link rel="stylesheet" href="{% static 'enroll/CSS/addAndShow.css' %}">
+{% endblock CSS %}
+
+{% block content %}
+    <div class="main-container">
+        <div class="registration-form">
+            <h2>Add New Student</h2>
+            <div class="form-container">
+                <form action="{% url 'addstudent' %}" method="POST" novalidate>
+                    {% csrf_token %}
+                    {{form.non_field_errors}}
+                        {% for field in form %}
+                            {{field.label_tag}} {{field}} <span class="errorlist">{{field.errors|striptags}}</span>
+                        {% endfor %}
+                    <input type="submit" value="Add Student">
+                </form>
+            </div>
+        </div>
+        <div class="showdatacontainer">
+            <h2>Displaying All Students</h2>
+            {% if students %}
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.studentName}}</td>
+                    <td>{{student.studentEmail}}</td>
+                    <td>{{student.studentPassword}}</td>
+                    <td class="action">
+                        <div class="btn">
+                            <div><a id="editbutton" href="{% url 'editstudent' student.id %}">Edit</a></div>
+                            <div><a id="deletebutton" href="{% url 'deletestudent' student.id %}">Delete</a></div>
+                        <div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <h3>No Student Data to Show.</h3>
+            {% endif %}            
+        </div>
+    </div>
+{% endblock content %}

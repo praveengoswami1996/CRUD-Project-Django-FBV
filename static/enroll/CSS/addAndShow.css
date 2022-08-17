@@ -1,0 +1,121 @@
+.main-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: .1rem solid #eee;
+    margin-top: 1.5rem;
+    border-radius: .8rem;
+    padding:1rem .8rem;
+}
+.main-container .registration-form,
+.main-container .showdatacontainer{
+    border-radius:.8rem;
+    border:.1rem solid #eee;
+    padding:.8rem .5rem;
+}
+.main-container .registration-form{
+    width:40%;
+}
+.main-container .showdatacontainer{
+    width:59.5%;
+}
+.main-container .registration-form h2,
+.main-container .showdatacontainer h2{
+    text-align: center;
+    font-size:1.8rem;
+    background: lightgreen;
+    color:#333;
+    padding:.8rem .3rem;
+    border-radius:.8rem;
+}
+.main-container .registration-form .form-container form label{
+    display: inline-block;
+    font-size:1.8rem;
+    padding:.8rem 0rem;
+    color:lightseagreen;
+}
+.main-container .registration-form .form-container form .inputfield,
+.main-container .registration-form .form-container form input[type="submit"]{
+    display: block;
+    width:100%;
+    background: #eee;
+    padding:.8rem;
+    border-radius:.8rem;
+    font-size:1.8rem;
+    text-transform: none;
+}
+.main-container .registration-form .form-container form input[type="submit"]{
+    background: lightseagreen;
+    color:#fff;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+.main-container .showdatacontainer table{
+    width:100%;
+    padding:.8rem .5rem;
+}
+.main-container .showdatacontainer table th{
+    background: lightseagreen;
+    color:#fff;
+    font-size: 1.6rem;
+    padding:.5rem .3rem;
+}
+.main-container .showdatacontainer table td{
+    background: #eee;
+    text-align: center;
+    padding:.5rem .3rem;
+    font-size: 1.5rem;
+}
+.main-container .showdatacontainer table .action{
+    width:25%;
+}
+.main-container .showdatacontainer table .action .btn{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.main-container .showdatacontainer table .action .btn div{
+    width:49%;
+}
+.main-container .showdatacontainer table .action .btn div a{
+    display:inline-block;
+    width:100%;
+    padding:.5rem .3rem;
+    border-radius: .6rem;
+    text-decoration: none;
+    font-size:1.3rem;
+    font-weight: bold;
+    color:#fff;
+}
+.main-container .showdatacontainer table .action .btn div #editbutton{
+    background: #fad52e;
+    color:#333;
+}
+.main-container .showdatacontainer table .action .btn div #deletebutton{
+    background: red;
+}
+
+.errorlist{
+    display: block;
+    list-style: none;
+    color:red;
+    font-size:1.2rem;
+    margin:0;
+    padding:0.2rem;
+    text-transform: none;
+}
+
+
+
+/*Media Queries*/
+@media (max-width:1200px){
+    .main-container{
+        flex-direction: column;
+    }
+    .main-container .registration-form,
+    .main-container .showdatacontainer{
+        width:100%;
+    }   
+}
